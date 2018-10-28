@@ -61,8 +61,8 @@ class FilmingLocation extends Component {
                         <b>{location}</b>
                         {(this.state.movies.length !== 0) && 
                             <ul> 
-                                {this.state.movies.map((movie, index) => (
-                                    <li key={index}>{movie.title}</li> 
+                                {this.state.movies.sort((a, b) => ('' + a.title).localeCompare(b.title)).map((movie, index) => (
+                                    <li key={index}>{`${movie.title} (${movie.release_year})`}</li> 
                                 ))}
                             </ul>
                         }
