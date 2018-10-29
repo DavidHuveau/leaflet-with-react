@@ -3,6 +3,9 @@ import { Map, TileLayer, Circle, Polygon} from 'react-leaflet';
 import FilmingLocation from '../../components/FilmingLocation';
 import dataWithGeo from '../../constants'
 import 'leaflet/dist/leaflet.css';
+import 'react-leaflet-markercluster/dist/styles.min.css';
+import MarkerClusterGroup from '../../components/MarkerClusterGroup';
+
 
 const GEO_SAN_FRANSISCO = [37.77492, -122.41941]
 const MASK_GEO_LIMIT_LATITUD = 1;
@@ -41,28 +44,32 @@ export default () => {
           className="MyMap" 
           center={GEO_SAN_FRANSISCO} 
           zoom={ZOOM}
-          onClick={handleMap}>
+          onClick={handleMap}
+          maxZoom={20}
+        >
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {dataWithGeo.slice(0, 1000).filter(f => maskGeo(f)).map((e, i) =>
-            <FilmingLocation
-              key={i}
-              mark={e}
-            ></FilmingLocation>       
-          )}
-          {/* <Marker 
-            position={position} 
-            icon={myIcon}
-            bubblingMouseEvents={false}
-            onClick={this.handleMarker}
-          >
-            <Popup>
-              {dataWithGeo[0].location}<br/>{position[0]}<br/>{position[1]}
-              <button onClick={this.handleButton}>bouton</button>
-            </Popup>
-          </Marker> */}
+          <MarkerClusterGroup>
+            {dataWithGeo.slice(0, 1000).filter(f => maskGeo(f)).map((e, i) =>
+              <FilmingLocation
+                key={i}
+                mark={e}
+              ></FilmingLocation>       
+            )}
+            {/* <Marker 
+              position={position} 
+              icon={myIcon}
+              bubblingMouseEvents={false}
+              onClick={this.handleMarker}
+            >
+              <Popup>
+                {dataWithGeo[0].location}<br/>{position[0]}<br/>{position[1]}
+                <button onClick={this.handleButton}>bouton</button>
+              </Popup>
+            </Marker> */}
+          </MarkerClusterGroup>
           <Circle
             center={GEO_SAN_FRANSISCO}
             fillColor="red"
