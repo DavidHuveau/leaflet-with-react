@@ -51,7 +51,7 @@ export default () => {
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <MarkerClusterGroup>
+          <MarkerClusterGroup showCoverageOnHover={false}>
             {dataWithGeo.slice(0, 1000).filter(f => maskGeo(f)).map((e, i) =>
               <FilmingLocation
                 key={i}
