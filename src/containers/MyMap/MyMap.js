@@ -1,4 +1,5 @@
 import React from 'react';
+import "./MyMap.css";
 import { Map, TileLayer, Circle, Polygon} from 'react-leaflet';
 import FilmingLocation from '../../components/FilmingLocation';
 import dataWithGeo from '../../constants'
@@ -14,8 +15,8 @@ const MASK_GEO_LIMIT_LONGITUD = 1;
 const ZOOM = 13;
 
 const maskGeoPolygon = [
-  [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) - MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) + MASK_GEO_LIMIT_LONGITUD / 2], 
-  [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) - MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) - MASK_GEO_LIMIT_LONGITUD / 2], 
+  [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) - MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) + MASK_GEO_LIMIT_LONGITUD / 2],
+  [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) - MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) - MASK_GEO_LIMIT_LONGITUD / 2],
   [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) + MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) - MASK_GEO_LIMIT_LONGITUD / 2],
   [(Math.trunc(GEO_SAN_FRANSISCO[0] * 10) / 10) + MASK_GEO_LIMIT_LATITUD / 2, (Math.trunc(GEO_SAN_FRANSISCO[1] * 10) / 10) + MASK_GEO_LIMIT_LONGITUD / 2]
 ]
@@ -40,9 +41,9 @@ const handleMap = (event) => {
 
 export default () => {
     return (
-        <Map 
-          className="MyMap" 
-          center={GEO_SAN_FRANSISCO} 
+        <Map
+          className="MyMap"
+          center={GEO_SAN_FRANSISCO}
           zoom={ZOOM}
           onClick={handleMap}
           maxZoom={20}
@@ -56,10 +57,10 @@ export default () => {
               <FilmingLocation
                 key={i}
                 mark={e}
-              ></FilmingLocation>       
+              ></FilmingLocation>
             )}
-            {/* <Marker 
-              position={position} 
+            {/* <Marker
+              position={position}
               icon={myIcon}
               bubblingMouseEvents={false}
               onClick={this.handleMarker}
